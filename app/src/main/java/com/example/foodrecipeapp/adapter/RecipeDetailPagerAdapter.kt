@@ -1,13 +1,13 @@
 package com.example.foodrecipeapp.adapter
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.foodrecipeapp.screen.detail.RecipeDetailFragment
 
-class MainPageAdapter(
-    activity: FragmentActivity,
+class RecipeDetailPagerAdapter(
+    fragment: RecipeDetailFragment,
     private val fragmentList: List<Fragment>
-) : FragmentStateAdapter(activity) {
+) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int {
         return fragmentList.size
     }

@@ -2,7 +2,6 @@ package com.example.foodrecipeapp.data.repo.source.remote.fetchjson
 
 import android.util.Log
 import com.example.foodrecipeapp.data.model.Recipe
-import com.example.foodrecipeapp.data.model.RecipeDetail
 import com.example.foodrecipeapp.data.model.RecipeEntry
 import com.example.foodrecipeapp.data.repo.FetchDataResult
 import com.example.foodrecipeapp.utils.ext.notNull
@@ -41,14 +40,5 @@ class ParseDataWithJson(private val fetchDataType: Int) {
             Log.e("ParseDataWithJson", "Error parsing JSON: $e")
         }
         return null
-    }
-
-    fun parseJsonDataToRecipeDetailData(jsonObject: JSONObject?): FetchDataResult<RecipeDetail> {
-        return try {
-            val item = ParseJsonToObjectDetail().parseJsonToRecipeObject(jsonObject)
-            FetchDataResult.Success(item, fetchDataType)
-        } catch (e: JSONException) {
-            FetchDataResult.Error(e)
-        }
     }
 }

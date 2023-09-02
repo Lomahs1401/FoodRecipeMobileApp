@@ -8,8 +8,6 @@ import com.example.foodrecipeapp.data.model.ExtendedIngredient
 import com.example.foodrecipeapp.data.model.ExtendedIngredientEntry
 import com.example.foodrecipeapp.data.model.Ingredient
 import com.example.foodrecipeapp.data.model.IngredientEntry
-import com.example.foodrecipeapp.data.model.Length
-import com.example.foodrecipeapp.data.model.LengthEntry
 import com.example.foodrecipeapp.data.model.Measure
 import com.example.foodrecipeapp.data.model.MeasureEntry
 import com.example.foodrecipeapp.data.model.Metric
@@ -176,20 +174,14 @@ class ParseJsonToObject {
             val ingredients = parseIngredients(ingredientsJsonArray)
             val equipments = parseEquipments(equipmentsJsonArray)
 
-            val step =
-                stepJsonObject.optJSONObject(StepEntry.LENGTH_KEY)?.let { parseLength(it) }?.let {
-                    Step(
-                        number = stepJsonObject.optInt(StepEntry.NUMBER_KEY),
-                        step = stepJsonObject.optString(StepEntry.STEP_KEY),
-                        ingredients = ingredients,
-                        equipments = equipments,
-                        length = it
-                    )
-                }
+            val step = Step(
+                number = stepJsonObject.optInt(StepEntry.NUMBER_KEY),
+                step = stepJsonObject.optString(StepEntry.STEP_KEY),
+                ingredients = ingredients,
+                equipments = equipments,
+            )
 
-            if (step != null) {
-                steps.add(step)
-            }
+            steps.add(step)
         }
 
         return steps
@@ -227,12 +219,5 @@ class ParseJsonToObject {
         }
 
         return equipments
-    }
-
-    private fun parseLength(lengthObject: JSONObject): Length {
-        return Length(
-            number = lengthObject.optInt(LengthEntry.NUMBER_KEY),
-            unit = lengthObject.optString(LengthEntry.UNIT_KEY)
-        )
     }
 }

@@ -3,7 +3,6 @@ package com.example.foodrecipeapp.data.repo.source
 import android.content.ContentResolver
 import androidx.lifecycle.LifecycleOwner
 import com.example.foodrecipeapp.data.model.Recipe
-import com.example.foodrecipeapp.data.model.RecipeDetail
 import com.example.foodrecipeapp.listener.OnResultListener
 
 interface RecipeDataSource {
@@ -25,10 +24,6 @@ interface RecipeDataSource {
         fun getListFavouritesRecipes(
             listener: OnResultListener<MutableList<Recipe>>,
             viewLifecycleOwner: LifecycleOwner
-        )
-        fun getRecipeDetail(
-            listener: OnResultListener<RecipeDetail>,
-            recipeId: Int
         )
         fun searchRecipesRemote(
             listener: OnResultListener<MutableList<Recipe>>,

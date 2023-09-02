@@ -1,5 +1,6 @@
 package com.example.foodrecipeapp.screen.viewmore
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -100,9 +101,15 @@ class ViewMoreRecipesFragment :
     override fun onRecipeImageClick(recipe: Recipe) {
         addFragment(
             R.id.fragment_view_more_recipes_container,
-            RecipeDetailFragment.newInstance(recipe.id),
+            RecipeDetailFragment.newInstance(recipe),
             true
         )
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onResume() {
+        super.onResume()
+        viewMoreRecipeAdapter.notifyDataSetChanged()
     }
 
     fun setOnBackListener(listener: OnBackPressedListener) {

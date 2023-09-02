@@ -102,7 +102,7 @@ class ViewMoreRecentRecipesFragment :
     override fun onRecipeImageClick(recipe: Recipe) {
         addFragment(
             R.id.fragment_view_more_recipes_container,
-            RecipeDetailFragment.newInstance(recipe.id),
+            RecipeDetailFragment.newInstance(recipe),
             true
         )
     }

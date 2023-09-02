@@ -4,7 +4,6 @@ import android.os.Handler
 import android.os.Looper
 import com.example.foodrecipeapp.constant.Constant
 import com.example.foodrecipeapp.data.model.Recipe
-import com.example.foodrecipeapp.data.model.RecipeDetail
 import com.example.foodrecipeapp.data.repo.FetchDataResult
 import com.example.foodrecipeapp.listener.OnResultListener
 import org.json.JSONException
@@ -87,25 +86,6 @@ class GetJsonFromUrl(
         }
     }
 
-    fun getRecipeDetail(listener: OnResultListener<RecipeDetail>) {
-        executor.execute {
-            val url =
-                "$urlString/information?includeNutrition=$IS_INCLUDE_NUTRITION${Constant.BASE_API_KEY}"
-            val responseJson = getJsonDataFromUrl(url)
-            val data = ParseDataWithJson(FetchDataResult.FETCH_TYPE_RECIPE_DETAIL)
-                .parseJsonDataToRecipeDetailData(JSONObject(responseJson))
-            handler.post {
-                try {
-                    data.let {
-                        listener.onSuccess(it)
-                    }
-                } catch (e: JSONException) {
-                    listener.onError(e)
-                }
-            }
-        }
-    }
-
     private fun getJsonDataFromUrl(urlString: String): String {
         val url = URL(urlString)
 
@@ -140,6 +120,5 @@ class GetJsonFromUrl(
         private const val REQUEST_ACCEPT_PROPERTY = "Accept"
         private const val REQUEST_JSON_VALUE = "application/json"
         private const val DEFAULT_RECIPE_NUMBER = 20
-        private const val IS_INCLUDE_NUTRITION = false
     }
 }

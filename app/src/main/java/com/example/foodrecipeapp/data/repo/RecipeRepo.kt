@@ -3,7 +3,6 @@ package com.example.foodrecipeapp.data.repo
 import android.content.ContentResolver
 import androidx.lifecycle.LifecycleOwner
 import com.example.foodrecipeapp.data.model.Recipe
-import com.example.foodrecipeapp.data.model.RecipeDetail
 import com.example.foodrecipeapp.data.repo.source.RecipeDataSource
 import com.example.foodrecipeapp.listener.OnResultListener
 
@@ -28,14 +27,6 @@ class RecipeRepo private constructor(
     ) {
         remote?.getListFavouritesRecipes(listener, viewLifecycleOwner)
     }
-
-    override fun getRecipeDetail(
-        listener: OnResultListener<RecipeDetail>,
-        recipeId: Int
-    ) {
-        remote?.getRecipeDetail(listener, recipeId)
-    }
-
     override fun searchRecipesRemote(
         listener: OnResultListener<MutableList<Recipe>>,
         searchValue: String

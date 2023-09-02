@@ -54,6 +54,8 @@ class FavouriteAdapter : RecyclerView.Adapter<FavouriteAdapter.FavouriteViewHold
 
     @SuppressLint("NotifyDataSetChanged")
     private fun confirmRemoveFavouriteRecipe(recipe: Recipe) {
+        recipe.isFavourite = !recipe.isFavourite
+
         DataLocalManager.removeFavouriteRecipe(recipe)
         notifyDataSetChanged()
     }

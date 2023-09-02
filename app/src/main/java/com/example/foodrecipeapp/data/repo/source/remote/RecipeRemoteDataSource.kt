@@ -3,7 +3,6 @@ package com.example.foodrecipeapp.data.repo.source.remote
 import androidx.lifecycle.LifecycleOwner
 import com.example.foodrecipeapp.constant.Constant
 import com.example.foodrecipeapp.data.model.Recipe
-import com.example.foodrecipeapp.data.model.RecipeDetail
 import com.example.foodrecipeapp.data.model.RecipeEntry
 import com.example.foodrecipeapp.data.repo.FetchDataResult
 import com.example.foodrecipeapp.data.repo.source.RecipeDataSource
@@ -31,16 +30,6 @@ class RecipeRemoteDataSource : RecipeDataSource.Remote {
                 )
             listener.onSuccess(fetchDataResult)
         }
-    }
-
-    override fun getRecipeDetail(
-        listener: OnResultListener<RecipeDetail>,
-        recipeId: Int
-    ) {
-        GetJsonFromUrl(
-            urlString = "${Constant.BASE_URL}${Constant.BASE_URL_RECIPE}/$recipeId",
-            keyEntity = ""
-        ).getRecipeDetail(listener)
     }
 
     override fun searchRecipesRemote(

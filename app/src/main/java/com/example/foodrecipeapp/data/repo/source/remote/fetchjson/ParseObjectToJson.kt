@@ -8,8 +8,6 @@ import com.example.foodrecipeapp.data.model.ExtendedIngredient
 import com.example.foodrecipeapp.data.model.ExtendedIngredientEntry
 import com.example.foodrecipeapp.data.model.Ingredient
 import com.example.foodrecipeapp.data.model.IngredientEntry
-import com.example.foodrecipeapp.data.model.Length
-import com.example.foodrecipeapp.data.model.LengthEntry
 import com.example.foodrecipeapp.data.model.Measure
 import com.example.foodrecipeapp.data.model.MeasureEntry
 import com.example.foodrecipeapp.data.model.MetricEntry
@@ -181,7 +179,6 @@ class ParseObjectToJson {
             stepJsonObject.put(StepEntry.INGREDIENTS_KEY, ingredientJsonArray)
             stepJsonObject.put(StepEntry.EQUIPMENTS_KEY, equipmentsJsonArray)
             stepJsonObject.put(StepEntry.EQUIPMENTS_KEY, equipmentsJsonArray)
-            stepJsonObject.put(StepEntry.LENGTH_KEY, lengthObjectToJsonObject(step.length))
 
             jsonArray.put(stepJsonObject)
         }
@@ -221,14 +218,5 @@ class ParseObjectToJson {
         }
 
         return jsonArray
-    }
-
-    private fun lengthObjectToJsonObject(length: Length): JSONObject {
-        val jsonObject = JSONObject()
-
-        jsonObject.put(LengthEntry.NUMBER_KEY, length.number)
-        jsonObject.put(LengthEntry.UNIT_KEY, length.unit)
-
-        return jsonObject
     }
 }

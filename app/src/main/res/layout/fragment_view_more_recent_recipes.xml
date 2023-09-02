@@ -50,7 +50,7 @@
         tools:ignore="TextSizeCheck">
 
         <androidx.appcompat.widget.SearchView
-            android:background="@color/light_yellow"
+            android:background="@color/white"
             android:id="@+id/search_recipe"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

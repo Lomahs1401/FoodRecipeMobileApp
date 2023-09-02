@@ -1,5 +1,6 @@
 package com.example.foodrecipeapp.screen.home
 
+import android.annotation.SuppressLint
 import android.app.ProgressDialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -104,11 +105,17 @@ class HomeFragment :
     }
 
     override fun onRecipeImageClick(recipe: Recipe) {
-        addFragment(R.id.fragment_home_container, RecipeDetailFragment.newInstance(recipe.id), true)
+        addFragment(R.id.fragment_home_container, RecipeDetailFragment.newInstance(recipe), true)
     }
 
     override fun onBackPressedWithData(listRecipes: MutableList<Recipe>) {
         homeChildAdapter.setRandomListRecipes(listRecipes)
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    override fun onResume() {
+        super.onResume()
+        homeChildAdapter.notifyDataSetChanged()
     }
 
     private fun getListHomeChild(): MutableList<HomeChild> {

@@ -3,7 +3,8 @@ package com.example.foodrecipeapp.screen
 import android.content.Intent
 import androidx.fragment.app.Fragment
 import com.example.foodrecipeapp.R
-import com.example.foodrecipeapp.adapter.MainPageAdapter
+import com.example.foodrecipeapp.adapter.MainPagerAdapter
+import com.example.foodrecipeapp.animation.ZoomOutPageTransformer
 import com.example.foodrecipeapp.databinding.ActivityMainBinding
 import com.example.foodrecipeapp.screen.favourites.FavouriteFragment
 import com.example.foodrecipeapp.screen.home.HomeFragment
@@ -14,8 +15,8 @@ import com.example.foodrecipeapp.utils.base.BaseViewBindingActivity
 
 class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
 
-    private val pagerAdapter: MainPageAdapter by lazy {
-        MainPageAdapter(this, getFragmentList())
+    private val pagerAdapter: MainPagerAdapter by lazy {
+        MainPagerAdapter(this, getFragmentList())
     }
 
     override fun createBindingActivity(): ActivityMainBinding {
@@ -31,6 +32,13 @@ class MainActivity : BaseViewBindingActivity<ActivityMainBinding>() {
         } else {
             binding.viewPager.adapter = pagerAdapter
             binding.viewPager.isUserInputEnabled = false
+            binding.viewPager.setPageTransformer(
+                ZoomOutPageTransformer(
+                    ActivityMainBinding.inflate(
+                        layoutInflater
+                    )
+                )
+            )
 
             binding.bottomNav.setOnItemSelectedListener { item ->
                 when (item.itemId) {

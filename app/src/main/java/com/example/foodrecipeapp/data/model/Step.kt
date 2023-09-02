@@ -9,7 +9,6 @@ data class Step(
     val step: String = "",
     val ingredients: MutableList<Ingredient> = mutableListOf(),
     val equipments: MutableList<Equipment> = mutableListOf(),
-    val length: Length = Length()
 ) : Parcelable
 
 object StepEntry {

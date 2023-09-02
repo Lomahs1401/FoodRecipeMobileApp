@@ -1,22 +1,19 @@
-package com.example.foodrecipeapp.screen.detail
+package com.example.foodrecipeapp.screen.detail.overview
 
 import com.example.foodrecipeapp.data.model.Recipe
 import com.example.foodrecipeapp.utils.base.BasePresenter
 import java.lang.Exception
 
-class RecipeDetailContract {
+class OverviewContract {
     /**
      * View
      */
     interface View {
-        fun showRecipeDetailInfo(recipe: Recipe)
-        fun onError(exception: Exception?)
+        fun showRecipeOverview(recipe: Recipe)
     }
 
     /**
      * Presenter
      */
-    interface Presenter : BasePresenter<View> {
-
-    }
+    interface Presenter : BasePresenter<View>
 }
